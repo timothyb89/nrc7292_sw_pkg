@@ -8,7 +8,7 @@ script_path = "/home/pi/nrc_pkg/script/"
 # Default Configuration (you can change value you want here)
 ##################################################################################
 # Raspbery Pi Conf.
-max_cpuclock      = 1         # Set Max CPU Clock : 0(off) or 1(on)
+max_cpuclock      = 0         # Set Max CPU Clock : 0(off) or 1(on)
 ##################################################################################
 # Firmware Conf.
 model             = 7292      # 7292/7393/7394
@@ -143,7 +143,7 @@ use_bridge_setup  = 0         # AP & STA : 0 (not use bridge setup) or n (use br
                               # RELAY : 0 (not use bridge setup) or 1 (use bridge setup with wlan0,wlan1)
 #--------------------------------------------------------------------------------#
 # Supported CH Width (STA Only)
-support_ch_width  = 1         # 0 (1/2MHz Support) or 1 (1/2/4MHz Support)
+support_ch_width  = 0         # 0 (1/2MHz Support) or 1 (1/2/4MHz Support)
 #--------------------------------------------------------------------------------#
 # Use Power save pretend operation for no response STA
 power_save_pretend  = 0      # 0 (disable) or 1 (enable)
@@ -909,7 +909,7 @@ def run_ap(interface):
             os.system("sudo hostapd_cli wps_pbc")
     else:
         launch_hostapd( interface, '/home/pi/nrc_pkg/script/conf/' + country + conf_file, country, debug, channel )
-        if strSecurity() == 'WPA-PBC':            
+        if strSecurity() == 'WPA-PBC':
             time.sleep(1)
             os.system("sudo hostapd_cli wps_pbc")
     time.sleep(3)
